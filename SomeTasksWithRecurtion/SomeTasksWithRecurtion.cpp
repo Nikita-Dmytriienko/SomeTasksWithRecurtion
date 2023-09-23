@@ -1,21 +1,30 @@
 ﻿#include <iostream>
 
 
-int recurtion(int number);
+void printNumbers(int n) {
+    if (n == 1) {
+        std::cout << n << " ";
+        return;
+    }
 
-int main()
-{
-	std::cout << recurtion(6);
+    printNumbers(n - 1);
+    std::cout << n << " ";
+}
 
+int main() {
+    int n;
+    std::cout << "Введите натуральное число n: ";
+    std::cin >> n;
+
+    if (n <= 0) {
+        std::cout << "Число должно быть натуральным." << std::endl;
+        return 1;
+    }
+
+    std::cout << "Числа от 1 до " << n << ": ";
+    printNumbers(n);
+    std::cout << std::endl;
 
 	system("pause>>void");
 	return 0;
-}
-
-int recurtion(int number)
-{
-	int i = 1;
-	if (i == number)
-		return number;
-	else std::cout << i+recurtion(number) << std::endl;
 }
