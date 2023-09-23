@@ -59,41 +59,82 @@
 //Выведите все числа от A до B включительно
 //в порядке возрастания, если A < B, или в порядке убывания в противном случае.
 
+//#include <iostream>
+//
+//void recurtion(int a, int b);
+//
+//int main()
+//{
+//	int a, b;
+//	std::cout << "Enter a:";
+//	std::cin >> a;
+//	std::cout << "Enter b:";
+//	std::cin >> b;
+//	
+//	recurtion(a, b);
+//	
+//
+//
+//	system("pause>>void");
+//	return 0;
+//}
+//
+//void recurtion(int a, int b)
+//{
+//	std::cout << a << " ";
+//
+//	if (a == b)
+//	{
+//		return;
+//	}
+//
+//	if (a < b)
+//	{
+//		recurtion(a + 1, b);
+//	}
+//	else
+//	{
+//		recurtion(a - 1, b);
+//	}
+//}
+
+//В теории вычислимости важную роль играет функция Аккермана A(m,n), определенная следующим образом :
+//Даны два целых неотрицательных числа m и n, каждое в отдельной строке.
+// Выведите A(m,n)
+
 #include <iostream>
 
-void recurtion(int a, int b);
+int ackermanFunc(int m, int n)
+{
+	if (m == 0)
+	{
+		return n + 1;
+	}
+	if (m > 0&&n == 0)
+	{
+		ackermanFunc(m - 1, 1);
+	}
+	if (m > 0 && n > 0)
+	{
+		ackermanFunc(m - 1, ackermanFunc(m, n - 1));
+	}
+
+}
 
 int main()
 {
-	int a, b;
-	std::cout << "Enter a:";
-	std::cin >> a;
-	std::cout << "Enter b:";
-	std::cin >> b;
-	
-	recurtion(a, b);
-	
+	int m, n;
+	std::cin >> n >> m;
+	if (m >= 0 && n >= 0)
+	{
+		ackermanFunc(m, n);
+	}
+	else {
+		std::cout << "=(";
+	}
 
+	
 
 	system("pause>>void");
 	return 0;
-}
-
-void recurtion(int a, int b)
-{
-	std::cout << a << " ";
-
-	if (a == b)
-	{
-		return;
-	}
-
-	if (a < b)
-	{
-		recurtion(a + 1, b);
-	}
-	else
-	{
-		recurtion(a - 1, b);
-	}
 }
