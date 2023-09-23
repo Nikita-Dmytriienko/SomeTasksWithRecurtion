@@ -110,13 +110,16 @@ int ackermanFunc(int m, int n)
 	{
 		return n + 1;
 	}
-	if (m > 0&&n == 0)
+	else if (m > 0&&n == 0)
 	{
-		ackermanFunc(m - 1, 1);
+		return ackermanFunc(m - 1, 1);
 	}
-	if (m > 0 && n > 0)
+	else if (m > 0 && n > 0)
 	{
-		ackermanFunc(m - 1, ackermanFunc(m, n - 1));
+		return ackermanFunc(m - 1, ackermanFunc(m, n - 1));
+	}
+	else {
+		return -1;
 	}
 
 }
@@ -125,15 +128,8 @@ int main()
 {
 	int m, n;
 	std::cin >> n >> m;
-	if (m >= 0 && n >= 0)
-	{
-		ackermanFunc(m, n);
-	}
-	else {
-		std::cout << "=(";
-	}
-
-	
+	int result = ackermanFunc(m, n);
+	std::cout << "A(" << m << ", " << n << ") = " << result << std::endl;
 
 	system("pause>>void");
 	return 0;
