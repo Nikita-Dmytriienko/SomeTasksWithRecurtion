@@ -61,7 +61,7 @@
 
 #include <iostream>
 
-int recurtion(int a, int b);
+void recurtion(int a, int b);
 
 int main()
 {
@@ -72,34 +72,28 @@ int main()
 	std::cin >> b;
 	
 	recurtion(a, b);
+	
 
 
 	system("pause>>void");
 	return 0;
 }
 
-int recurtion(int a, int b)
-{   //a=4;b=2;
-	if (a > b&&a>=0&&b>=0)
+void recurtion(int a, int b)
+{
+	std::cout << a << " ";
+
+	if (a == b)
 	{
-		std::cout << b << " ";
 		return;
 	}
-	//b=5;a=2
-	if (b > a && a >= 0 && b >= 0)
+
+	if (a < b)
 	{
-		std::cout << a << " ";
-		return;
+		recurtion(a + 1, b);
 	}
-	if(a > b && a >= 0 && b >= 0)
+	else
 	{
-		recurtion(a, b - 1);
-		std::cout << b << " ";
+		recurtion(a - 1, b);
 	}
-	if (b > a && a >= 0 && b >= 0)
-	{
-		recurtion(a - 1,b);
-		std::cout << a << " ";
-	}
-	
 }
